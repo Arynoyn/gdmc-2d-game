@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(CharacterGrounding))]
 public class PlayerMovementController : MonoBehaviour
 {
     [SerializeField] private float movementSpeed = 10.0f;
