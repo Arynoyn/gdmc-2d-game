@@ -7,6 +7,8 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private float movementSpeed = 10.0f;
     [SerializeField] private float jumpForce = 400;
 
+    public float Speed { get; private set; }
+
     private Rigidbody2D _rigidbody2D;
     private CharacterGrounding _characterGrounding;
 
@@ -16,10 +18,10 @@ public class PlayerMovementController : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        
+        Speed = Mathf.Abs(horizontalInput);
         Vector3 movement = new Vector3(horizontalInput, 0);
 
         transform.position += movement * (movementSpeed * Time.deltaTime);
