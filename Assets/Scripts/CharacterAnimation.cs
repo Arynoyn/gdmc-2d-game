@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class CharacterAnimation : MonoBehaviour
 {
     private IMove _mover;
@@ -18,11 +20,12 @@ public class CharacterAnimation : MonoBehaviour
 
     private void Update()
     {
-        _animator.SetFloat("speed", Mathf.Abs(_mover.Speed));
+        float speed = _mover.Speed;
+        _animator.SetFloat("speed", Mathf.Abs(speed));
 
-        if (_mover.Speed != 0)
+        if (speed != 0)
         {
-            _spriteRenderer.flipX = _mover.Speed > 0;
+            _spriteRenderer.flipX = speed > 0;
         }
     }
 }
