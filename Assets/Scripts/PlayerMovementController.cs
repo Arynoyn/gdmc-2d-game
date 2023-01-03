@@ -2,7 +2,7 @@
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CharacterGrounding))]
-public class PlayerMovementController : MonoBehaviour
+public class PlayerMovementController : MonoBehaviour, IMove
 {
     [SerializeField] private float movementSpeed = 10.0f;
     [SerializeField] private float jumpForce = 400;
@@ -21,7 +21,7 @@ public class PlayerMovementController : MonoBehaviour
     private void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        Speed = Mathf.Abs(horizontalInput);
+        Speed = horizontalInput;
         Vector3 movement = new Vector3(horizontalInput, 0);
 
         transform.position += movement * (movementSpeed * Time.deltaTime);
