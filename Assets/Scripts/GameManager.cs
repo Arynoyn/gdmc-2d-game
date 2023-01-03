@@ -1,0 +1,28 @@
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class GameManager : MonoBehaviour
+{
+    public int Lives;// { get; private set; }
+    public static GameManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            Lives = 3;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    public void KillPlayer()
+    {
+        Lives--;
+        SceneManager.LoadScene(sceneBuildIndex: 0);
+    }
+}
