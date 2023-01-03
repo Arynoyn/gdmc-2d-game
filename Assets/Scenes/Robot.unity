@@ -842,7 +842,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 843e8038809476945852e91b7f4ae7b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lives: 0
 --- !u!4 &958238630
 Transform:
   m_ObjectHideFlags: 0
@@ -1057,7 +1056,7 @@ GameObject:
   - component: {fileID: 1077388426}
   - component: {fileID: 1077388425}
   m_Layer: 5
-  m_Name: Life_Counter_Frame
+  m_Name: Lives_Counter_Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1133,7 +1132,7 @@ GameObject:
   - component: {fileID: 1084267544}
   - component: {fileID: 1084267543}
   m_Layer: 5
-  m_Name: Life_Counter_Heart
+  m_Name: Lives_Counter_Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1205,9 +1204,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1112072553}
   - component: {fileID: 1112072555}
+  - component: {fileID: 1112072556}
   - component: {fileID: 1112072554}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Lives_Counter_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1329,6 +1329,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112072552}
   m_CullTransparentMesh: 0
+--- !u!114 &1112072556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112072552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b017f71ce4af2418dc736fb6229f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1164425650
 GameObject:
   m_ObjectHideFlags: 0
