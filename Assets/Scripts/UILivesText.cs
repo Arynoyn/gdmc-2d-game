@@ -1,18 +1,25 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(TextMeshProUGUI))]
 public class UILivesText : MonoBehaviour
 {
-    private TextMeshProUGUI tmproText { get; set; }
+    private TextMeshProUGUI _tmproText;
 
     private void Awake()
     {
-        tmproText = GetComponent<TextMeshProUGUI>();
+        _tmproText = GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        tmproText.text = GameManager.Instance.Lives.ToString();
+        GameManager.Instance.OnLivesChanged += HandleOnLivesChanged;
+        
+        _tmproText.text = GameManager.Instance.Lives.ToString();
     }
+
+    private void HandleOnLivesChanged(int livesRemaining) { 
+        _tmproText.text = livesRemaining.ToString();
+     }
 }
