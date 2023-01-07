@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -40,6 +41,18 @@ public class GameManager : MonoBehaviour
         {
             RestartGame();
         }
+        else
+        {
+            SpawnPlayerAtLastCheckpoint();
+        }
+    }
+
+    private void SpawnPlayerAtLastCheckpoint()
+    {
+        Checkpoint[] checkpoints = FindObjectsOfType<Checkpoint>();
+        Checkpoint lastCheckpoint = checkpoints.Last(t => t.Passed);
+        PlayerMovementController player = FindObjectOfType<PlayerMovementController>();
+        player.transform.position = lastCheckpoint.transform.position;
     }
 
     internal void AddCoin()
