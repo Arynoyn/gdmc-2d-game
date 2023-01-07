@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    public bool Passed { get; set; }
+    public bool Activated { get; private set; }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        PlayerMovementController playerMovementController = col.GetComponent<PlayerMovementController>();
-        if (playerMovementController != null)
+        PlayerMovementController player = col.GetComponent<PlayerMovementController>();
+        if (player != null)
         {
-            Passed = true;
+            Activated = true;
         }
     }
 }

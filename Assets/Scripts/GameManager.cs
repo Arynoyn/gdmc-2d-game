@@ -47,14 +47,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void SpawnPlayerAtLastCheckpoint()
-    {
-        Checkpoint[] checkpoints = FindObjectsOfType<Checkpoint>();
-        Checkpoint lastCheckpoint = checkpoints.Last(t => t.Passed);
-        PlayerMovementController player = FindObjectOfType<PlayerMovementController>();
-        player.transform.position = lastCheckpoint.transform.position;
-    }
-
     internal void AddCoin()
     {
         _coins++;
@@ -79,5 +71,14 @@ public class GameManager : MonoBehaviour
         }
         
         SceneManager.LoadScene(sceneBuildIndex: 0);
+    }
+
+    private void SpawnPlayerAtLastCheckpoint()
+    {
+        CheckpointManager checkpointManager = FindObjectOfType<CheckpointManager>();
+        Checkpoint lastActivatedCheckpoint = checkpointManager.GetLastActivatedCheckpoint();
+        
+        PlayerMovementController player = FindObjectOfType<PlayerMovementController>();
+        player.transform.position = lastActivatedCheckpoint.transform.position;
     }
 }
