@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,9 @@ public class CoinAudio : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.OnCoinsChanged += _ => _audioSource.Play();
+        GameManager.Instance.OnCoinsChanged += PlayCoinDingAudio;
     }
+
+    private void OnDestroy() { GameManager.Instance.OnCoinsChanged -= PlayCoinDingAudio; }
+    private void PlayCoinDingAudio(int coins) { _audioSource.Play(); }
 }

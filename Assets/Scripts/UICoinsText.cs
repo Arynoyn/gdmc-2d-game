@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
@@ -14,6 +15,11 @@ public class UICoinsText : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.OnCoinsChanged += HandleCoinsChanged;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnCoinsChanged -= HandleCoinsChanged;
     }
 
     private void HandleCoinsChanged(int coins)
