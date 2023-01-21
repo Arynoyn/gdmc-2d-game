@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Saw : MonoBehaviour
+public class Mover : MonoBehaviour
 {
     [SerializeField] private Transform Start;
     [SerializeField] private Transform End;
