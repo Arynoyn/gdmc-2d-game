@@ -1215,6 +1215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17df9dcbfafbcd746962c919e1575709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabToSpawnOnStomp: {fileID: 3352372721558769217, guid: 847dfd4a3eade9f4da89224b2ce02338,
+    type: 3}
 --- !u!1 &191781041
 GameObject:
   m_ObjectHideFlags: 0
