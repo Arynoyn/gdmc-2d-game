@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DefaultNamespace;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Animator))]
@@ -20,12 +21,9 @@ public class CoinBox : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        bool wasHitFromBelow = col.contacts[0].normal.y > 0;
-        bool isPlayer = col.collider.GetComponent<PlayerMovementController>() != null;
-        
         if (_coinsRemaining > 0
-            && isPlayer
-            && wasHitFromBelow)
+            && col.WasPlayer()
+            && col.WasBottom())
         {
             GameManager.Instance.AddCoin();
             _coinsRemaining--;
