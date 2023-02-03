@@ -14,7 +14,7 @@ namespace DefaultNamespace
             return collision.contacts[0].normal.y > 0.75;
         }
         
-        public static bool WasHitFromTopSide(this Collision2D collision)
+        public static bool WasTop(this Collision2D collision)
         {
             return collision.contacts[0].normal.y < -0.75;
         }

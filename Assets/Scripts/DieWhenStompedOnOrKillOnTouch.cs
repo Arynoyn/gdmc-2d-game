@@ -7,17 +7,19 @@ public class DieWhenStompedOnOrKillOnTouch : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.WasHitFromTopSide() 
-            && col.WasPlayer())
+        if (col.WasPlayer())
         {
-            if (prefabToSpawnOnStomp != null)
+            if (col.WasTop())
             {
-                Instantiate(prefabToSpawnOnStomp, transform.position, transform.rotation);
+                if (prefabToSpawnOnStomp != null)
+                {
+                    Instantiate(prefabToSpawnOnStomp, transform.position, transform.rotation);
+                }
+                Destroy(gameObject);
+            } else
+            {
+                GameManager.Instance.KillPlayer();
             }
-            Destroy(gameObject);
-        } else if (col.WasPlayer())
-        {
-            GameManager.Instance.KillPlayer();
         }
     }
 }
