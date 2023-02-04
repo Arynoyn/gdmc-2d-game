@@ -1,9 +1,10 @@
 ﻿using DefaultNamespace;
+using Interfaces;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Animator))]
-public class CoinBox : MonoBehaviour
+public class CoinBox : MonoBehaviour, ITakeShellHit
 {
     [SerializeField] private SpriteRenderer _enabledSprite;
     [SerializeField] private SpriteRenderer _disabledSprite;
@@ -25,16 +26,32 @@ public class CoinBox : MonoBehaviour
             && col.WasPlayer()
             && col.WasBottom())
         {
-            GameManager.Instance.AddCoin();
-            _coinsRemaining--;
+            GetCoin();
+        }
+    }
 
-            if (_animator != null) { _animator.SetTrigger("flipCoin"); }
-            
-            if (_coinsRemaining <= 0)
-            {
-                _enabledSprite.enabled = false;
-                _disabledSprite.enabled = true;
-            }
+    private void GetCoin()
+    {
+        GameManager.Instance.AddCoin();
+        _coinsRemaining--;
+
+        if (_animator != null)
+        {
+            _animator.SetTrigger("flipCoin");
+        }
+
+        if (_coinsRemaining <= 0)
+        {
+            _enabledSprite.enabled = false;
+            _disabledSprite.enabled = true;
+        }
+    }
+
+    public void HandleShellHit(ShellFlipped shellFlipped)
+    {
+        if (_coinsRemaining > 0)
+        {
+            GetCoin();
         }
     }
 }
