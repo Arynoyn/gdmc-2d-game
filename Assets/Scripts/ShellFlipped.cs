@@ -1,8 +1,6 @@
-﻿using System;
-using DefaultNamespace;
+﻿using DefaultNamespace;
 using Interfaces;
 using UnityEngine;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Rigidbody2D))]

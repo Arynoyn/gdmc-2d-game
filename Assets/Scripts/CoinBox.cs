@@ -1,7 +1,6 @@
 ﻿using DefaultNamespace;
 using Interfaces;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Animator))]
 public class CoinBox : MonoBehaviour, ITakeShellHit
