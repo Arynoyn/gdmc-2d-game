@@ -1,5 +1,6 @@
 ﻿using System;
 using DefaultNamespace;
+using Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,11 +38,8 @@ public class ShellFlipped : MonoBehaviour
             {
                 LaunchShell(col);
                 
-                BreakableBox breakableBox = col.collider.GetComponent<BreakableBox>();
-                if (breakableBox != null)
-                {
-                    Destroy(breakableBox.gameObject);
-                }
+                ITakeShellHit takeShellHit = col.collider.GetComponent<ITakeShellHit>();
+                takeShellHit?.HandleShellHit(this);
             }
         }
     }
