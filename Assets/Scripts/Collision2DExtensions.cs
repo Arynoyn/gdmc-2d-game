@@ -18,5 +18,11 @@ namespace DefaultNamespace
         {
             return collision.contacts[0].normal.y < -0.75;
         }
+        
+        public static bool WasSide(this Collision2D collision)
+        {
+            return collision.contacts[0].normal.x < -0.75 
+                   || collision.contacts[0].normal.x > 0.75;
+        }
     }
 }

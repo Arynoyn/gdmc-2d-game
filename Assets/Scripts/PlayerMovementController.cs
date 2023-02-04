@@ -6,6 +6,7 @@ public class PlayerMovementController : MonoBehaviour, IMove
 {
     [SerializeField] private float movementSpeed = 10.0f;
     [SerializeField] private float jumpForce = 400;
+    [SerializeField] private float bounceForce = 300;
 
     public float Speed { get; private set; }
 
@@ -33,5 +34,10 @@ public class PlayerMovementController : MonoBehaviour, IMove
         Vector3 movement = new Vector3(horizontalInput, 0);
 
         transform.position += movement * (movementSpeed * Time.deltaTime);
+    }
+
+    public void Bounce()
+    {
+        _rigidbody2D.AddForce(Vector2.up * jumpForce);
     }
 }

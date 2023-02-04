@@ -29,20 +29,44 @@ public class ShellFlipped : MonoBehaviour
     {
         if (col.WasPlayer())
         {
-            if (_direction.magnitude == 0)
+            HandlePlayerCollision(col);
+        }
+        else
+        {
+            if (col.WasSide())
             {
                 LaunchShell(col);
+                
+                BreakableBox breakableBox = col.collider.GetComponent<BreakableBox>();
+                if (breakableBox != null)
+                {
+                    Destroy(breakableBox.gameObject);
+                }
+            }
+        }
+    }
+
+    private void HandlePlayerCollision(Collision2D col)
+    {
+        PlayerMovementController playerController = col.collider.GetComponent<PlayerMovementController>();
+        if (_direction.magnitude == 0)
+        {
+            LaunchShell(col);
+            if (col.WasTop())
+            {
+                playerController.Bounce();
+            }
+        }
+        else
+        {
+            if (col.WasTop())
+            {
+                _direction = Vector2.zero;
+                playerController.Bounce();
             }
             else
             {
-                if (col.WasTop())
-                {
-                    _direction = Vector2.zero;
-                }
-                else
-                {
-                    GameManager.Instance.KillPlayer();
-                }
+                GameManager.Instance.KillPlayer();
             }
         }
     }
