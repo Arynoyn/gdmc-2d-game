@@ -1,7 +1,8 @@
 ﻿using DefaultNamespace;
+using Interfaces;
 using UnityEngine;
 
-public class BreakableBox : MonoBehaviour
+public class BreakableBox : MonoBehaviour, ITakeShellHit
 {
     private void OnCollisionEnter2D(Collision2D col)
     {
@@ -10,5 +11,10 @@ public class BreakableBox : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void HandleShellHit(ShellFlipped shellFlipped)
+    {
+        Destroy(gameObject);
     }
 }
