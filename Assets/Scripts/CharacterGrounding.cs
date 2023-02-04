@@ -2,8 +2,7 @@
 
 public class CharacterGrounding : MonoBehaviour
 {
-    [SerializeField] private Transform leftFoot;
-    [SerializeField] private Transform rightFoot;
+    [SerializeField] private Transform[] touchPoints;
     [SerializeField] private float maxDistance;
     [SerializeField] private LayerMask layerMask;
     
@@ -15,10 +14,13 @@ public class CharacterGrounding : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        Vector2 leftFootPosition = leftFoot.position;
-        Vector2 rightFootPosition = rightFoot.position;
-        IsGrounded = CheckGrounding(leftFootPosition) || CheckGrounding(rightFootPosition);
-        
+        foreach (Transform touchPoint in touchPoints)
+        {
+            IsGrounded = CheckGrounding(touchPoint.position);
+            if (IsGrounded) { break; }
+
+        }
+
         StickToGroundedObject();
     }
 
@@ -41,16 +43,25 @@ public class CharacterGrounding : MonoBehaviour
         }
     }
 
-    private bool CheckGrounding(Vector2 footPosition)
+    private bool CheckGrounding(Vector2 touchpoint)
     {
-        RaycastHit2D raycastHit = Physics2D.Raycast(footPosition, Vector2.down, maxDistance, layerMask);
-        Debug.DrawRay(footPosition, Vector2.down * maxDistance, Color.red);
+        RaycastHit2D raycastHit = Physics2D.Raycast(touchpoint, Vector2.down, maxDistance, layerMask);
+        Debug.DrawRay(touchpoint, Vector2.down * maxDistance, Color.red);
 
         var groundedObjectExists = raycastHit.collider != null;
-        
-        groundedObject = groundedObjectExists 
-            ? raycastHit.collider.transform 
-            : null;
+
+        if (groundedObjectExists)
+        {
+            if (groundedObject != raycastHit.collider.transform)
+            {
+                groundedObject = raycastHit.collider.transform;
+                groundedObjectLastPosition = groundedObject.position;
+            }
+        }
+        else
+        {
+            groundedObject = null;
+        }
 
         return groundedObjectExists;
     }
