@@ -170,7 +170,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1272891942}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &492409634
+--- !u!114 &492409638
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,6 +182,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f04bdba7edcdc946b1b7ce80167014d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &492409639
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492409633}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 963de04f9c47a6e43b132a0aac16ed5e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1087571847
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +310,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 492409634}
+      objectReference: {fileID: 492409638}
     - target: {fileID: 86095977242291205, guid: a9f2b9461a16545509a4980ed1aed931,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -436,6 +455,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641126585129311922, guid: a9f2b9461a16545509a4980ed1aed931,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641126585129311922, guid: a9f2b9461a16545509a4980ed1aed931,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641126585129311922, guid: a9f2b9461a16545509a4980ed1aed931,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5831184864668701653, guid: a9f2b9461a16545509a4980ed1aed931,
         type: 3}
