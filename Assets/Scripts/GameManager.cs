@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
 
     private void RestartGame()
     {
+        _currentLevelIndex = 0;
         _lives = 3;
         if (OnLivesChanged != null)
         {
@@ -76,7 +77,7 @@ public class GameManager : MonoBehaviour
             OnCoinsChanged(_coins);
         }
         
-        SceneManager.LoadScene(sceneBuildIndex: 0);
+        SceneManager.LoadScene(_currentLevelIndex);
     }
 
     private void SpawnPlayerAtLastCheckpoint()

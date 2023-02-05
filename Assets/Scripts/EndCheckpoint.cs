@@ -5,9 +5,4 @@ public class EndCheckpoint : MonoBehaviour
     {
         GameManager.Instance.MoveToNextLevel();
     }
-
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        
-    }
 }
