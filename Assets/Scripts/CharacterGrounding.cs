@@ -7,7 +7,7 @@ public class CharacterGrounding : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
     
     public bool IsGrounded { get; private set; }
-    public Vector2 GroundedDirection { get; private set; }
+    public Vector2? GroundedDirection { get; private set; }
 
     private Transform groundedObject;
     private Vector3? groundedObjectLastPosition;
@@ -63,6 +63,7 @@ public class CharacterGrounding : MonoBehaviour
         else
         {
             groundedObject = null;
+            GroundedDirection = null;
         }
 
         return groundedObjectExists;

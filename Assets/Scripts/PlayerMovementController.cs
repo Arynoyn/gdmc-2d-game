@@ -28,9 +28,9 @@ public class PlayerMovementController : MonoBehaviour, IMove
         {
             _rigidbody2D.AddForce(Vector2.up * jumpForce);
 
-            if (_characterGrounding.GroundedDirection != Vector2.down)
+            if (_characterGrounding.GroundedDirection.HasValue && _characterGrounding.GroundedDirection != Vector2.down)
             {
-                _rigidbody2D.AddForce(_characterGrounding.GroundedDirection * (-1f * wallJumpForce));
+                _rigidbody2D.AddForce(_characterGrounding.GroundedDirection.Value * (-1f * wallJumpForce));
             }
         }
     }

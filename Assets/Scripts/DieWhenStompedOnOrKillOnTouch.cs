@@ -17,7 +17,7 @@ public class DieWhenStompedOnOrKillOnTouch : MonoBehaviour
                     Instantiate(prefabToSpawnOnStomp, transform.position, transform.rotation);
                 }
 
-                playerController.Bounce();
+                //playerController.Bounce();
                 
                 Destroy(gameObject);
             } else
