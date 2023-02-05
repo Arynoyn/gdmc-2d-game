@@ -7,6 +7,7 @@ public class CharacterGrounding : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
     
     public bool IsGrounded { get; private set; }
+    public Vector2 GroundedDirection { get; private set; }
 
     private Transform groundedObject;
     private Vector3? groundedObjectLastPosition;
@@ -16,7 +17,7 @@ public class CharacterGrounding : MonoBehaviour
     {
         foreach (Transform touchPoint in touchPoints)
         {
-            IsGrounded = CheckGrounding(touchPoint.position);
+            IsGrounded = CheckGrounding(touchPoint);
             if (IsGrounded) { break; }
 
         }
@@ -43,10 +44,10 @@ public class CharacterGrounding : MonoBehaviour
         }
     }
 
-    private bool CheckGrounding(Vector2 touchpoint)
+    private bool CheckGrounding(Transform touchpoint)
     {
-        RaycastHit2D raycastHit = Physics2D.Raycast(touchpoint, Vector2.down, maxDistance, layerMask);
-        Debug.DrawRay(touchpoint, Vector2.down * maxDistance, Color.red);
+        RaycastHit2D raycastHit = Physics2D.Raycast(touchpoint.position, touchpoint.forward, maxDistance, layerMask);
+        Debug.DrawRay(touchpoint.position, touchpoint.forward * maxDistance, Color.red);
 
         var groundedObjectExists = raycastHit.collider != null;
 
@@ -56,6 +57,7 @@ public class CharacterGrounding : MonoBehaviour
             {
                 groundedObject = raycastHit.collider.transform;
                 groundedObjectLastPosition = groundedObject.position;
+                GroundedDirection = touchpoint.forward;
             }
         }
         else
