@@ -41,7 +41,7 @@ public class Walker : MonoBehaviour
         float y = transform.position.y;
         
         Vector2 colliderEdge = new Vector2(x, y);
-        Debug.DrawRay(colliderEdge, _direction * _maxDistance, Color.red);
+        Debug.DrawRay(colliderEdge , _direction * _maxDistance, Color.red);
         RaycastHit2D raycastHit = Physics2D.Raycast(colliderEdge, _direction, _maxDistance);
 
         if (raycastHit.collider == null)
@@ -77,8 +77,8 @@ public class Walker : MonoBehaviour
     private float GetForwardX()
     {
         float x = _direction == Vector2.left
-            ? _collider2D.bounds.min.x
-            : _collider2D.bounds.max.x;
+            ? _collider2D.bounds.min.x - 0.1f
+            : _collider2D.bounds.max.x + 0.1f;
         return x;
     }
 
